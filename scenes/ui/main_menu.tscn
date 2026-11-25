@@ -1,0 +1,187 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/main_menu.gd" id="1_script"]
+[ext_resource type="Theme" path="res://resources/cyberpunk_theme.tres" id="2_theme"]
+[ext_resource type="PackedScene" path="res://scenes/ui/cyber_background.tscn" id="3_bg"]
+[ext_resource type="PackedScene" path="res://scenes/ui/cyber_button.tscn" id="4_btn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_status"]
+content_margin_left = 12.0
+content_margin_top = 4.0
+content_margin_right = 12.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0.941176, 1, 0.12)
+border_width_left = 2
+border_color = Color(0, 0.941176, 1, 0.9)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_theme")
+script = ExtResource("1_script")
+
+[node name="CyberBackground" parent="." instance=ExtResource("3_bg")]
+layout_mode = 1
+
+[node name="SafeArea" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 42
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 28
+
+[node name="MainContainer" type="VBoxContainer" parent="SafeArea"]
+layout_mode = 2
+theme_override_constants/separation = 26
+
+[node name="TopStatusRow" type="HBoxContainer" parent="SafeArea/MainContainer"]
+layout_mode = 2
+
+[node name="StatusLabel" type="Label" parent="SafeArea/MainContainer/TopStatusRow"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.941176, 1, 1)
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_status")
+text = "YEAR 2077 — SYSTEM ONLINE"
+
+[node name="HeaderBox" type="VBoxContainer" parent="SafeArea/MainContainer"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="LogoWrapper" type="Control" parent="SafeArea/MainContainer/HeaderBox"]
+custom_minimum_size = Vector2(720, 82)
+layout_mode = 2
+
+[node name="LogoGlitch" type="Label" parent="SafeArea/MainContainer/HeaderBox/LogoWrapper"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 2.0
+offset_right = 723.0
+offset_bottom = 82.0
+theme_override_colors/font_color = Color(1, 0, 0.498039, 0.72)
+theme_override_font_sizes/font_size = 64
+text = "CYBER RUNNER"
+
+[node name="LogoMain" type="Label" parent="SafeArea/MainContainer/HeaderBox/LogoWrapper"]
+layout_mode = 0
+offset_right = 720.0
+offset_bottom = 80.0
+theme_override_colors/font_color = Color(0, 0.941176, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.541176, 0.168627, 0.886275, 0.8)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 4
+theme_override_font_sizes/font_size = 64
+text = "CYBER RUNNER"
+
+[node name="Subtitle" type="Label" parent="SafeArea/MainContainer/HeaderBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0.498039, 1)
+theme_override_font_sizes/font_size = 20
+text = "THE LAST RESISTANCE"
+
+[node name="SpacerTop" type="Control" parent="SafeArea/MainContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="MenuButtons" type="VBoxContainer" parent="SafeArea/MainContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 14
+
+[node name="PlayButton" parent="SafeArea/MainContainer/MenuButtons" instance=ExtResource("4_btn")]
+layout_mode = 2
+text = "PLAY GAME"
+
+[node name="SelectLevelButton" parent="SafeArea/MainContainer/MenuButtons" instance=ExtResource("4_btn")]
+layout_mode = 2
+text = "SELECT LEVEL"
+
+[node name="SettingsButton" parent="SafeArea/MainContainer/MenuButtons" instance=ExtResource("4_btn")]
+layout_mode = 2
+text = "SETTINGS"
+
+[node name="ExitButton" parent="SafeArea/MainContainer/MenuButtons" instance=ExtResource("4_btn")]
+layout_mode = 2
+text = "EXIT GAME"
+
+[node name="BottomSpacer" type="Control" parent="SafeArea/MainContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="FooterRow" type="HBoxContainer" parent="SafeArea/MainContainer"]
+layout_mode = 2
+
+[node name="VersionLabel" type="Label" parent="SafeArea/MainContainer/FooterRow"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65, 0.72, 0.86, 0.8)
+theme_override_font_sizes/font_size = 14
+text = "v0.1.0"
+
+[node name="ExitOverlay" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.02, 0.02, 0.05, 0.78)
+
+[node name="Center" type="CenterContainer" parent="ExitOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ConfirmPanel" type="PanelContainer" parent="ExitOverlay/Center"]
+custom_minimum_size = Vector2(460, 210)
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="ExitOverlay/Center/ConfirmPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 12
+
+[node name="VBox" type="VBoxContainer" parent="ExitOverlay/Center/ConfirmPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 26
+alignment = 1
+
+[node name="QuestionLabel" type="Label" parent="ExitOverlay/Center/ConfirmPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.941176, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "ARE YOU SURE YOU WANT TO EXIT?"
+horizontal_alignment = 1
+
+[node name="ButtonsRow" type="HBoxContainer" parent="ExitOverlay/Center/ConfirmPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="YesButton" parent="ExitOverlay/Center/ConfirmPanel/Margin/VBox/ButtonsRow" instance=ExtResource("4_btn")]
+custom_minimum_size = Vector2(160, 50)
+layout_mode = 2
+text = "YES"
+
+[node name="CancelButton" parent="ExitOverlay/Center/ConfirmPanel/Margin/VBox/ButtonsRow" instance=ExtResource("4_btn")]
+custom_minimum_size = Vector2(160, 50)
+layout_mode = 2
+text = "CANCEL"
+
+[node name="GlitchTimer" type="Timer" parent="."]
+wait_time = 2.8
+autostart = true

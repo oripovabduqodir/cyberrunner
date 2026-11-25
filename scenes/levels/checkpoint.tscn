@@ -1,0 +1,78 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://scripts/levels/checkpoint.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/tilesets/checkpoint_sheet.png" id="2_sheet"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_inactive"]
+atlas = ExtResource("2_sheet")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_active_1"]
+atlas = ExtResource("2_sheet")
+region = Rect2(32, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_active_2"]
+atlas = ExtResource("2_sheet")
+region = Rect2(64, 0, 32, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_inactive")
+}],
+"loop": false,
+"name": &"inactive",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_active_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_active_2")
+}],
+"loop": true,
+"name": &"active",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cp"]
+size = Vector2(56, 96)
+
+[node name="Checkpoint" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_script")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -48)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_cp")
+animation = &"inactive"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -48)
+shape = SubResource("RectangleShape2D_cp")
+
+[node name="ActivationParticles" type="CPUParticles2D" parent="."]
+position = Vector2(0, -64)
+emitting = false
+amount = 24
+lifetime = 0.55
+one_shot = true
+explosiveness = 0.9
+emission_shape = 1
+emission_sphere_radius = 12.0
+direction = Vector2(0, -1)
+spread = 180.0
+gravity = Vector2(0, 120)
+initial_velocity_min = 60.0
+initial_velocity_max = 150.0
+scale_amount_min = 2.5
+scale_amount_max = 4.5
+color = Color(0, 0.941176, 1, 0.9)
+
+[node name="SpawnMarker" type="Marker2D" parent="."]
+position = Vector2(0, -32)

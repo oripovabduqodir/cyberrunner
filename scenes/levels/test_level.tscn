@@ -1,0 +1,401 @@
+[gd_scene load_steps=14 format=3]
+
+[ext_resource type="Script" path="res://scripts/levels/test_level.gd" id="1_level_script"]
+[ext_resource type="PackedScene" path="res://scenes/player/player.tscn" id="2_player_scene"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ground1"]
+size = Vector2(640, 140)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ground2"]
+size = Vector2(680, 140)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ground3"]
+size = Vector2(800, 140)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_plat_sm"]
+size = Vector2(180, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_plat_md"]
+size = Vector2(240, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_obs_tall"]
+size = Vector2(44, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_obs_box"]
+size = Vector2(56, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wall"]
+size = Vector2(40, 720)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fallzone"]
+size = Vector2(3000, 120)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hud"]
+bg_color = Color(0.04, 0.04, 0.09, 0.82)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0.94, 1, 0.85)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="TestLevel" type="Node2D"]
+script = ExtResource("1_level_script")
+
+[node name="Background" type="Node2D" parent="."]
+z_index = -10
+
+[node name="Sky" type="ColorRect" parent="Background"]
+offset_right = 2560.0
+offset_bottom = 720.0
+color = Color(0.0392157, 0.0392157, 0.0705882, 1)
+
+[node name="Building1" type="ColorRect" parent="Background"]
+offset_left = 90.0
+offset_top = 220.0
+offset_right = 240.0
+offset_bottom = 580.0
+color = Color(0.0862745, 0.0627451, 0.14902, 1)
+
+[node name="Building2" type="ColorRect" parent="Background"]
+offset_left = 340.0
+offset_top = 150.0
+offset_right = 520.0
+offset_bottom = 580.0
+color = Color(0.0666667, 0.0862745, 0.168627, 1)
+
+[node name="Building3" type="ColorRect" parent="Background"]
+offset_left = 880.0
+offset_top = 180.0
+offset_right = 1090.0
+offset_bottom = 580.0
+color = Color(0.0862745, 0.054902, 0.156863, 1)
+
+[node name="Building4" type="ColorRect" parent="Background"]
+offset_left = 1220.0
+offset_top = 120.0
+offset_right = 1440.0
+offset_bottom = 580.0
+color = Color(0.0588235, 0.0901961, 0.172549, 1)
+
+[node name="Building5" type="ColorRect" parent="Background"]
+offset_left = 1860.0
+offset_top = 170.0
+offset_right = 2110.0
+offset_bottom = 580.0
+color = Color(0.0901961, 0.0588235, 0.164706, 1)
+
+[node name="Building6" type="ColorRect" parent="Background"]
+offset_left = 2240.0
+offset_top = 240.0
+offset_right = 2460.0
+offset_bottom = 580.0
+color = Color(0.0627451, 0.0862745, 0.160784, 1)
+
+[node name="NeonStrip1" type="ColorRect" parent="Background"]
+offset_left = 360.0
+offset_top = 180.0
+offset_right = 500.0
+offset_bottom = 186.0
+color = Color(0, 0.941176, 1, 0.45)
+
+[node name="NeonStrip2" type="ColorRect" parent="Background"]
+offset_left = 1245.0
+offset_top = 160.0
+offset_right = 1415.0
+offset_bottom = 166.0
+color = Color(1, 0, 0.498039, 0.45)
+
+[node name="NeonStrip3" type="ColorRect" parent="Background"]
+offset_left = 1890.0
+offset_top = 210.0
+offset_right = 2080.0
+offset_bottom = 216.0
+color = Color(0.541176, 0.168627, 0.886275, 0.5)
+
+[node name="Geometry" type="Node2D" parent="."]
+
+[node name="Ground1" type="StaticBody2D" parent="Geometry"]
+position = Vector2(320, 650)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Geometry/Ground1"]
+shape = SubResource("RectangleShape2D_ground1")
+
+[node name="Body" type="ColorRect" parent="Geometry/Ground1"]
+offset_left = -320.0
+offset_top = -70.0
+offset_right = 320.0
+offset_bottom = 70.0
+color = Color(0.0784314, 0.0784314, 0.14902, 1)
+
+[node name="NeonTop" type="ColorRect" parent="Geometry/Ground1"]
+offset_left = -320.0
+offset_top = -70.0
+offset_right = 320.0
+offset_bottom = -64.0
+color = Color(0, 0.941176, 1, 1)
+
+[node name="Ground2" type="StaticBody2D" parent="Geometry"]
+position = Vector2(1160, 650)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Geometry/Ground2"]
+shape = SubResource("RectangleShape2D_ground2")
+
+[node name="Body" type="ColorRect" parent="Geometry/Ground2"]
+offset_left = -340.0
+offset_top = -70.0
+offset_right = 340.0
+offset_bottom = 70.0
+color = Color(0.0784314, 0.0784314, 0.14902, 1)
+
+[node name="NeonTop" type="ColorRect" parent="Geometry/Ground2"]
+offset_left = -340.0
+offset_top = -70.0
+offset_right = 340.0
+offset_bottom = -64.0
+color = Color(0, 0.941176, 1, 1)
+
+[node name="Ground3" type="StaticBody2D" parent="Geometry"]
+position = Vector2(2160, 650)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Geometry/Ground3"]
+shape = SubResource("RectangleShape2D_ground3")
+
+[node name="Body" type="ColorRect" parent="Geometry/Ground3"]
+offset_left = -400.0
+offset_top = -70.0
+offset_right = 400.0
+offset_bottom = 70.0
+color = Color(0.0784314, 0.0784314, 0.14902, 1)
+
+[node name="NeonTop" type="ColorRect" parent="Geometry/Ground3"]
+offset_left = -400.0
+offset_top = -70.0
+offset_right = 400.0
+offset_bottom = -64.0
+color = Color(0, 0.941176, 1, 1)
+
+[node name="Platform1" type="StaticBody2D" parent="Geometry"]
+position = Vector2(410, 470)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Geometry/Platform1"]
+shape = SubResource("RectangleShape2D_plat_sm")
+
+[node name="Body" type="ColorRect" parent="Geometry/Platform1"]
+offset_left = -90.0
+offset_top = -12.0
+offset_right = 90.0
+offset_bottom = 12.0
+color = Color(0.117647, 0.0941176, 0.219608, 1)
+
+[node name="NeonTop" type="ColorRect" parent="Geometry/Platform1"]
+offset_left = -90.0
+offset_top = -12.0
+offset_right = 90.0
+offset_bottom = -7.0
+color = Color(0.541176, 0.168627, 0.886275, 1)
+
+[node name="Platform2" type="StaticBody2D" parent="Geometry"]
+position = Vector2(690, 380)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Geometry/Platform2"]
+shape = SubResource("RectangleShape2D_plat_md")
+
+[node name="Body" type="ColorRect" parent="Geometry/Platform2"]
+offset_left = -120.0
+offset_top = -12.0
+offset_right = 120.0
+offset_bottom = 12.0
+color = Color(0.117647, 0.0941176, 0.219608, 1)
+
+[node name="NeonTop" type="ColorRect" parent="Geometry/Platform2"]
+offset_left = -120.0
+offset_top = -12.0
+offset_right = 120.0
+offset_bottom = -7.0
+color = Color(0.541176, 0.168627, 0.886275, 1)
+
+[node name="Platform3" type="StaticBody2D" parent="Geometry"]
+position = Vector2(1020, 290)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Geometry/Platform3"]
+shape = SubResource("RectangleShape2D_plat_sm")
+
+[node name="Body" type="ColorRect" parent="Geometry/Platform3"]
+offset_left = -90.0
+offset_top = -12.0
+offset_right = 90.0
+offset_bottom = 12.0
+color = Color(0.117647, 0.0941176, 0.219608, 1)
+
+[node name="NeonTop" type="ColorRect" parent="Geometry/Platform3"]
+offset_left = -90.0
+offset_top = -12.0
+offset_right = 90.0
+offset_bottom = -7.0
+color = Color(0, 0.941176, 1, 1)
+
+[node name="Platform4" type="StaticBody2D" parent="Geometry"]
+position = Vector2(1630, 450)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Geometry/Platform4"]
+shape = SubResource("RectangleShape2D_plat_sm")
+
+[node name="Body" type="ColorRect" parent="Geometry/Platform4"]
+offset_left = -90.0
+offset_top = -12.0
+offset_right = 90.0
+offset_bottom = 12.0
+color = Color(0.117647, 0.0941176, 0.219608, 1)
+
+[node name="NeonTop" type="ColorRect" parent="Geometry/Platform4"]
+offset_left = -90.0
+offset_top = -12.0
+offset_right = 90.0
+offset_bottom = -7.0
+color = Color(1, 0, 0.498039, 1)
+
+[node name="Platform5" type="StaticBody2D" parent="Geometry"]
+position = Vector2(2120, 420)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Geometry/Platform5"]
+shape = SubResource("RectangleShape2D_plat_md")
+
+[node name="Body" type="ColorRect" parent="Geometry/Platform5"]
+offset_left = -120.0
+offset_top = -12.0
+offset_right = 120.0
+offset_bottom = 12.0
+color = Color(0.117647, 0.0941176, 0.219608, 1)
+
+[node name="NeonTop" type="ColorRect" parent="Geometry/Platform5"]
+offset_left = -120.0
+offset_top = -12.0
+offset_right = 120.0
+offset_bottom = -7.0
+color = Color(0.541176, 0.168627, 0.886275, 1)
+
+[node name="Obstacle1" type="StaticBody2D" parent="Geometry"]
+position = Vector2(980, 556)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Geometry/Obstacle1"]
+shape = SubResource("RectangleShape2D_obs_box")
+
+[node name="Body" type="ColorRect" parent="Geometry/Obstacle1"]
+offset_left = -28.0
+offset_top = -24.0
+offset_right = 28.0
+offset_bottom = 24.0
+color = Color(0.16, 0.07, 0.18, 1)
+
+[node name="NeonRim" type="ColorRect" parent="Geometry/Obstacle1"]
+offset_left = -28.0
+offset_top = -24.0
+offset_right = 28.0
+offset_bottom = -20.0
+color = Color(1, 0, 0.498039, 1)
+
+[node name="Obstacle2" type="StaticBody2D" parent="Geometry"]
+position = Vector2(1320, 544)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Geometry/Obstacle2"]
+shape = SubResource("RectangleShape2D_obs_tall")
+
+[node name="Body" type="ColorRect" parent="Geometry/Obstacle2"]
+offset_left = -22.0
+offset_top = -36.0
+offset_right = 22.0
+offset_bottom = 36.0
+color = Color(0.16, 0.07, 0.18, 1)
+
+[node name="NeonRim" type="ColorRect" parent="Geometry/Obstacle2"]
+offset_left = -22.0
+offset_top = -36.0
+offset_right = 22.0
+offset_bottom = -32.0
+color = Color(1, 0, 0.498039, 1)
+
+[node name="Obstacle3" type="StaticBody2D" parent="Geometry"]
+position = Vector2(1980, 556)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Geometry/Obstacle3"]
+shape = SubResource("RectangleShape2D_obs_box")
+
+[node name="Body" type="ColorRect" parent="Geometry/Obstacle3"]
+offset_left = -28.0
+offset_top = -24.0
+offset_right = 28.0
+offset_bottom = 24.0
+color = Color(0.16, 0.07, 0.18, 1)
+
+[node name="NeonRim" type="ColorRect" parent="Geometry/Obstacle3"]
+offset_left = -28.0
+offset_top = -24.0
+offset_right = 28.0
+offset_bottom = -20.0
+color = Color(1, 0, 0.498039, 1)
+
+[node name="LeftWall" type="StaticBody2D" parent="Geometry"]
+position = Vector2(-20, 360)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Geometry/LeftWall"]
+shape = SubResource("RectangleShape2D_wall")
+
+[node name="RightWall" type="StaticBody2D" parent="Geometry"]
+position = Vector2(2580, 360)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Geometry/RightWall"]
+shape = SubResource("RectangleShape2D_wall")
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
+position = Vector2(140, 520)
+
+[node name="FallZone" type="Area2D" parent="."]
+position = Vector2(1280, 820)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FallZone"]
+shape = SubResource("RectangleShape2D_fallzone")
+
+[node name="Player" parent="." instance=ExtResource("2_player_scene")]
+position = Vector2(140, 520)
+
+[node name="ControlsHUD" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="PanelContainer" parent="ControlsHUD"]
+offset_left = 18.0
+offset_top = 18.0
+offset_right = 370.0
+offset_bottom = 148.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_hud")
+
+[node name="Margin" type="MarginContainer" parent="ControlsHUD/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 10
+
+[node name="VBox" type="VBoxContainer" parent="ControlsHUD/Panel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Title" type="Label" parent="ControlsHUD/Panel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.941176, 1, 1)
+text = "CYBER RUNNER — SINOV XARITASI"
+
+[node name="MoveLabel" type="Label" parent="ControlsHUD/Panel/Margin/VBox"]
+layout_mode = 2
+text = "A / D yoki ← / → : Harakatlanish"
+
+[node name="JumpLabel" type="Label" parent="ControlsHUD/Panel/Margin/VBox"]
+layout_mode = 2
+text = "Space : Sakrash / Double Jump"
+
+[node name="DashLabel" type="Label" parent="ControlsHUD/Panel/Margin/VBox"]
+layout_mode = 2
+text = "Shift : Dash  |  R : Qayta  |  Esc : Menyu"
