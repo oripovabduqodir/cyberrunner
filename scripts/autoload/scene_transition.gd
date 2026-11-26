@@ -8,6 +8,7 @@ var _is_transitioning: bool = false
 
 
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	fade_rect.color = Color(0.02, 0.02, 0.05, 0.0)
 	fade_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
@@ -22,13 +23,18 @@ func change_scene_to_file(scene_path: String, duration: float = 0.3) -> void:
 	if _is_transitioning:
 		return
 	_is_transitioning = true
+	get_tree().paused = false
+	if has_node("/root/MobileInputManager"):
+		MobileInputManager.release_all_actions()
 	fade_rect.mouse_filter = Control.MOUSE_FILTER_STOP
 
 	var out_tween: Tween = create_tween()
 	out_tween.tween_property(fade_rect, "color:a", 1.0, duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
 	await out_tween.finished
 
-	get_tree().change_scene_to_file(scene_path)
+	var err: Error = get_tree().change_scene_to_file(scene_path)
+	if err != OK:
+		push_error("SceneTransition: Failed to load scene '%s' (Error %d)" % [scene_path, err])
 
 	var in_tween: Tween = create_tween()
 	in_tween.tween_property(fade_rect, "color:a", 0.0, duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)

@@ -1,0 +1,123 @@
+[gd_scene load_steps=17 format=3]
+
+[ext_resource type="Script" path="res://scripts/enemies/security_turret.gd" id="1_script"]
+[ext_resource type="Script" path="res://scripts/components/health_component.gd" id="2_health"]
+[ext_resource type="Texture2D" path="res://assets/enemies/turret/turret-1.png" id="3_t1"]
+[ext_resource type="Texture2D" path="res://assets/enemies/turret/turret-2.png" id="4_t2"]
+[ext_resource type="Texture2D" path="res://assets/enemies/turret/turret-3.png" id="5_t3"]
+[ext_resource type="Texture2D" path="res://assets/enemies/turret/turret-4.png" id="6_t4"]
+[ext_resource type="Texture2D" path="res://assets/enemies/turret/turret-5.png" id="7_t5"]
+[ext_resource type="Texture2D" path="res://assets/enemies/turret/turret-6.png" id="8_t6"]
+[ext_resource type="Texture2D" path="res://assets/weapons/fx/enemy-explosion-1.png" id="9_ex1"]
+[ext_resource type="Texture2D" path="res://assets/weapons/fx/enemy-explosion-2.png" id="10_ex2"]
+[ext_resource type="Texture2D" path="res://assets/weapons/fx/enemy-explosion-3.png" id="11_ex3"]
+[ext_resource type="Texture2D" path="res://assets/weapons/fx/enemy-explosion-4.png" id="12_ex4"]
+[ext_resource type="Texture2D" path="res://assets/weapons/fx/enemy-explosion-5.png" id="13_ex5"]
+[ext_resource type="Texture2D" path="res://assets/weapons/fx/enemy-explosion-6.png" id="14_ex6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_turret"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_ex1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ex2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ex3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ex4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ex5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_ex6")
+}],
+"loop": false,
+"name": &"death",
+"speed": 14.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_t5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_t6")
+}],
+"loop": false,
+"name": &"fire",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_t1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_t2")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_t3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_t4")
+}],
+"loop": true,
+"name": &"warn",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_turret"]
+size = Vector2(44, 48)
+
+[node name="SecurityTurret" type="CharacterBody2D"]
+collision_layer = 4
+script = ExtResource("1_script")
+projectile_speed = 370.0
+warning_duration = 0.6
+damage = 20
+score_reward = 200
+detection_range = 440.0
+attack_range = 440.0
+attack_cooldown = 2.1
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("2_health")
+max_health = 80
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -25)
+scale = Vector2(2.2, 2.2)
+sprite_frames = SubResource("SpriteFrames_turret")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -24)
+shape = SubResource("RectangleShape2D_turret")
+
+[node name="LineOfSightRay" type="RayCast2D" parent="."]
+position = Vector2(0, -36)
+enabled = false
+target_position = Vector2(100, 0)
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(24, -36)
+
+[node name="WarningLight" type="ColorRect" parent="."]
+visible = false
+offset_left = -6.0
+offset_top = -64.0
+offset_right = 6.0
+offset_bottom = -52.0
+color = Color(1, 0.1, 0.25, 0.95)
+
+[node name="AttackCooldownTimer" type="Timer" parent="."]
+one_shot = true

@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/hazards/security_door.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/props/secret_lab/entry_door_sheet.png" id="2_tex"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_door"]
+size = Vector2(32, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_trigger"]
+size = Vector2(72, 96)
+
+[node name="SecurityDoor" type="StaticBody2D"]
+script = ExtResource("1_script")
+
+[node name="DoorSprite" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -48)
+scale = Vector2(0.75, 1.5)
+texture = ExtResource("2_tex")
+region_enabled = true
+region_rect = Rect2(0, 0, 64, 64)
+
+[node name="BodyCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -48)
+shape = SubResource("RectangleShape2D_door")
+
+[node name="TriggerArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerArea"]
+position = Vector2(0, -48)
+shape = SubResource("RectangleShape2D_trigger")

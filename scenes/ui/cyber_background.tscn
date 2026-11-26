@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=8 format=3]
 
 [ext_resource type="Script" path="res://scripts/ui/cyber_background.gd" id="1_script"]
-[ext_resource type="Texture2D" path="res://assets/backgrounds/skyline_far.png" id="2_far"]
-[ext_resource type="Texture2D" path="res://assets/backgrounds/skyline_mid.png" id="3_mid"]
+[ext_resource type="Texture2D" path="res://assets/backgrounds/neon_city/buildings-bg.png" id="2_far"]
+[ext_resource type="Texture2D" path="res://assets/backgrounds/neon_city/near-buildings-bg.png" id="3_mid"]
+[ext_resource type="Texture2D" path="res://assets/props/neon_city/v-police.png" id="4_vpol"]
+[ext_resource type="Texture2D" path="res://assets/props/neon_city/v-red.png" id="5_vred"]
 
 [sub_resource type="Gradient" id="Gradient_sky"]
 offsets = PackedFloat32Array(0, 0.58, 1)
@@ -35,15 +37,17 @@ mouse_filter = 2
 texture = SubResource("GradientTexture2D_sky")
 expand_mode = 1
 
-[node name="FarSkyline" type="TextureRect" parent="."]
+[node name="FarSkyline" type="Parallax2D" parent="."]
+repeat_size = Vector2(432, 0)
+repeat_times = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="FarSkyline"]
+modulate = Color(0.76, 0.82, 0.98, 0.85)
 texture_filter = 1
-layout_mode = 0
-offset_left = -80.0
-offset_right = 1360.0
-offset_bottom = 720.0
-mouse_filter = 2
+position = Vector2(0, 348)
+scale = Vector2(3, 3)
 texture = ExtResource("2_far")
-stretch_mode = 5
+centered = false
 
 [node name="FogLayer" type="Control" parent="."]
 layout_mode = 1
@@ -72,15 +76,44 @@ offset_bottom = 660.0
 mouse_filter = 2
 color = Color(0, 0.941176, 1, 0.07)
 
-[node name="MidSkyline" type="TextureRect" parent="."]
+[node name="MidSkyline" type="Parallax2D" parent="."]
+repeat_size = Vector2(1282, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="MidSkyline"]
+modulate = Color(0.68, 0.74, 0.92, 0.92)
+texture_filter = 1
+position = Vector2(0, 177)
+scale = Vector2(2.6, 2.6)
+texture = ExtResource("3_mid")
+centered = false
+
+[node name="VehiclePolice" type="TextureRect" parent="."]
+modulate = Color(0.85, 0.9, 1, 0.58)
 texture_filter = 1
 layout_mode = 0
-offset_left = -80.0
-offset_right = 1360.0
-offset_bottom = 720.0
+offset_left = 780.0
+offset_top = 64.0
+offset_right = 884.0
+offset_bottom = 102.0
 mouse_filter = 2
-texture = ExtResource("3_mid")
+texture = ExtResource("4_vpol")
+expand_mode = 1
 stretch_mode = 5
+
+[node name="VehicleRed" type="TextureRect" parent="."]
+modulate = Color(0.95, 0.75, 0.9, 0.55)
+texture_filter = 1
+layout_mode = 0
+offset_left = 960.0
+offset_top = 612.0
+offset_right = 1032.0
+offset_bottom = 656.0
+mouse_filter = 2
+texture = ExtResource("5_vred")
+expand_mode = 1
+stretch_mode = 5
+flip_h = true
 
 [node name="NeonLights" type="Control" parent="."]
 layout_mode = 1

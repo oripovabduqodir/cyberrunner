@@ -1,9 +1,12 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene load_steps=10 format=3]
 
 [ext_resource type="Script" path="res://scripts/ui/level_select.gd" id="1_script"]
 [ext_resource type="Theme" path="res://resources/cyberpunk_theme.tres" id="2_theme"]
 [ext_resource type="PackedScene" path="res://scenes/ui/cyber_background.tscn" id="3_bg"]
 [ext_resource type="PackedScene" path="res://scenes/ui/cyber_button.tscn" id="4_btn"]
+[ext_resource type="Texture2D" path="res://assets/backgrounds/neon_city/near-buildings-bg.png" id="5_prev1"]
+[ext_resource type="Texture2D" path="res://assets/backgrounds/secret_lab/lab_night_3.png" id="6_prev2"]
+[ext_resource type="Texture2D" path="res://assets/backgrounds/neon_city/skyline-a.png" id="7_prev3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_card_locked"]
 content_margin_left = 18.0
@@ -107,9 +110,23 @@ layout_mode = 2
 theme_override_constants/separation = 14
 
 [node name="Banner" type="ColorRect" parent="SafeArea/VBox/CardsRow/Card1/Margin/VBox"]
-custom_minimum_size = Vector2(0, 90)
+clip_contents = true
+custom_minimum_size = Vector2(0, 108)
 layout_mode = 2
 color = Color(0.03, 0.14, 0.22, 1)
+
+[node name="Preview" type="TextureRect" parent="SafeArea/VBox/CardsRow/Card1/Margin/VBox/Banner"]
+modulate = Color(0.75, 0.9, 1, 0.72)
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_prev1")
+expand_mode = 1
+stretch_mode = 6
 
 [node name="Accent" type="ColorRect" parent="SafeArea/VBox/CardsRow/Card1/Margin/VBox/Banner"]
 layout_mode = 1
@@ -175,9 +192,23 @@ layout_mode = 2
 theme_override_constants/separation = 14
 
 [node name="Banner" type="ColorRect" parent="SafeArea/VBox/CardsRow/Card2/Margin/VBox"]
-custom_minimum_size = Vector2(0, 90)
+clip_contents = true
+custom_minimum_size = Vector2(0, 108)
 layout_mode = 2
-color = Color(0.11, 0.05, 0.18, 1)
+color = Color(0.03, 0.16, 0.14, 1)
+
+[node name="Preview" type="TextureRect" parent="SafeArea/VBox/CardsRow/Card2/Margin/VBox/Banner"]
+modulate = Color(0.35, 0.95, 0.65, 0.65)
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_prev2")
+expand_mode = 1
+stretch_mode = 6
 
 [node name="Accent" type="ColorRect" parent="SafeArea/VBox/CardsRow/Card2/Margin/VBox/Banner"]
 layout_mode = 1
@@ -244,9 +275,23 @@ layout_mode = 2
 theme_override_constants/separation = 14
 
 [node name="Banner" type="ColorRect" parent="SafeArea/VBox/CardsRow/Card3/Margin/VBox"]
-custom_minimum_size = Vector2(0, 90)
+clip_contents = true
+custom_minimum_size = Vector2(0, 108)
 layout_mode = 2
 color = Color(0.16, 0.04, 0.12, 1)
+
+[node name="Preview" type="TextureRect" parent="SafeArea/VBox/CardsRow/Card3/Margin/VBox/Banner"]
+modulate = Color(0.95, 0.35, 0.65, 0.68)
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_prev3")
+expand_mode = 1
+stretch_mode = 6
 
 [node name="Accent" type="ColorRect" parent="SafeArea/VBox/CardsRow/Card3/Margin/VBox/Banner"]
 layout_mode = 1

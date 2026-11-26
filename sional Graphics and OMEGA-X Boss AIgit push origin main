@@ -1,0 +1,104 @@
+ AGENTS.md                                          |   8 [32m+[m
+ ASSET_CREDITS.md                                   |  55 [32m++[m
+ HANDOFF.md                                         |  57 [32m+[m[31m-[m
+ ROADMAP.md                                         |  97 [32m++[m[31m-[m
+ assets/backgrounds/lab_bg.png                      | Bin [31m0[m -> [32m37223[m bytes
+ assets/backgrounds/lab_bg.png.import               |  40 [32m++[m
+ assets/backgrounds/neon_city/buildings-bg.png      | Bin [31m0[m -> [32m4612[m bytes
+ .../backgrounds/neon_city/buildings-bg.png.import  |  40 [32m++[m
+ .../neon_city/industrial_silhouette.png            | Bin [31m0[m -> [32m3559[m bytes
+ .../neon_city/industrial_silhouette.png.import     |  40 [32m++[m
+ assets/backgrounds/neon_city/near-buildings-bg.png | Bin [31m0[m -> [32m21635[m bytes
+ .../neon_city/near-buildings-bg.png.import         |  40 [32m++[m
+ assets/backgrounds/neon_city/skyline-a.png         | Bin [31m0[m -> [32m4051[m bytes
+ assets/backgrounds/neon_city/skyline-a.png.import  |  40 [32m++[m
+ assets/backgrounds/neon_city/skyline-b.png         | Bin [31m0[m -> [32m4994[m bytes
+ assets/backgrounds/neon_city/skyline-b.png.import  |  40 [32m++[m
+ assets/backgrounds/secret_lab/lab_night_1.png      | Bin [31m0[m -> [32m1732[m bytes
+ .../backgrounds/secret_lab/lab_night_1.png.import  |  40 [32m++[m
+ assets/backgrounds/secret_lab/lab_night_2.png      | Bin [31m0[m -> [32m3214[m bytes
+ .../backgrounds/secret_lab/lab_night_2.png.import  |  40 [32m++[m
+ assets/backgrounds/secret_lab/lab_night_3.png      | Bin [31m0[m -> [32m3573[m bytes
+ .../backgrounds/secret_lab/lab_night_3.png.import  |  40 [32m++[m
+ assets/backgrounds/secret_lab/lab_night_4.png      | Bin [31m0[m -> [32m1605[m bytes
+ .../backgrounds/secret_lab/lab_night_4.png.import  |  40 [32m++[m
+ assets/backgrounds/secret_lab/lab_night_5.png      | Bin [31m0[m -> [32m2872[m bytes
+ .../backgrounds/secret_lab/lab_night_5.png.import  |  40 [32m++[m
+ assets/backgrounds/tower_bg.png                    | Bin [31m0[m -> [32m41647[m bytes
+ assets/backgrounds/tower_bg.png.import             |  40 [32m++[m
+ assets/characters/cyborg/Cyborg_attack1.png        | Bin [31m0[m -> [32m1691[m bytes
+ assets/characters/cyborg/Cyborg_attack1.png.import |  40 [32m++[m
+ assets/characters/cyborg/Cyborg_death.png          | Bin [31m0[m -> [32m1623[m bytes
+ assets/characters/cyborg/Cyborg_death.png.import   |  40 [32m++[m
+ assets/characters/cyborg/Cyborg_doublejump.png     | Bin [31m0[m -> [32m1954[m bytes
+ .../characters/cyborg/Cyborg_doublejump.png.import |  40 [32m++[m
+ assets/characters/cyborg/Cyborg_hurt.png           | Bin [31m0[m -> [32m1317[m bytes
+ assets/characters/cyborg/Cyborg_hurt.png.import    |  40 [32m++[m
+ assets/characters/cyborg/Cyborg_idle.png           | Bin [31m0[m -> [32m1442[m bytes
+ assets/characters/cyborg/Cyborg_idle.png.import    |  40 [32m++[m
+ assets/characters/cyborg/Cyborg_jump.png           | Bin [31m0[m -> [32m1528[m bytes
+ assets/characters/cyborg/Cyborg_jump.png.import    |  40 [32m++[m
+ assets/characters/cyborg/Cyborg_punch.png          | Bin [31m0[m -> [32m1728[m bytes
+ assets/characters/cyborg/Cyborg_punch.png.import   |  40 [32m++[m
+ assets/characters/cyborg/Cyborg_run.png            | Bin [31m0[m -> [32m1878[m bytes
+ assets/characters/cyborg/Cyborg_run.png.import     |  40 [32m++[m
+ assets/characters/cyborg/Cyborg_run_attack.png     | Bin [31m0[m -> [32m1885[m bytes
+ .../characters/cyborg/Cyborg_run_attack.png.import |  40 [32m++[m
+ assets/characters/player_cyber_warrior.png         | Bin [31m2922[m -> [32m11549[m bytes
+ assets/enemies/attack_drone.png                    | Bin [31m0[m -> [32m1110[m bytes
+ assets/enemies/attack_drone.png.import             |  40 [32m++[m
+ assets/enemies/boss/omega_x/attack_1/1_atk_1.png   | Bin [31m0[m -> [32m4546[m bytes
+ .../boss/omega_x/attack_1/1_atk_1.png.import       |  40 [32m++[m
+ assets/enemies/boss/omega_x/attack_1/1_atk_10.png  | Bin [31m0[m -> [32m3885[m bytes
+ .../boss/omega_x/attack_1/1_atk_10.png.import      |  40 [32m++[m
+ assets/enemies/boss/omega_x/attack_1/1_atk_11.png  | Bin [31m0[m -> [32m3524[m bytes
+ .../boss/omega_x/attack_1/1_atk_11.png.import      |  40 [32m++[m
+ assets/enemies/boss/omega_x/attack_1/1_atk_12.png  | Bin [31m0[m -> [32m3878[m bytes
+ .../boss/omega_x/attack_1/1_atk_12.png.import      |  40 [32m++[m
+ assets/enemies/boss/omega_x/attack_1/1_atk_13.png  | Bin [31m0[m -> [32m4235[m bytes
+ .../boss/omega_x/attack_1/1_atk_13.png.import      |  40 [32m++[m
+ assets/enemies/boss/omega_x/attack_1/1_atk_14.png  | Bin [31m0[m -> [32m4546[m bytes
+ .../boss/omega_x/attack_1/1_atk_14.png.import      |  40 [32m++[m
+ assets/enemies/boss/omega_x/attack_1/1_atk_2.png   | Bin [31m0[m -> [32m4568[m bytes
+ .../boss/omega_x/attack_1/1_atk_2.png.import       |  40 [32m++[m
+ assets/enemies/boss/omega_x/attack_1/1_atk_3.png   | Bin [31m0[m -> [32m4336[m bytes
+ .../boss/omega_x/attack_1/1_atk_3.png.import       |  40 [32m++[m
+ assets/enemies/boss/omega_x/attack_1/1_atk_4.png   | Bin [31m0[m -> [32m4276[m bytes
+ .../boss/omega_x/attack_1/1_atk_4.png.import       |  40 [32m++[m
+ assets/enemies/boss/omega_x/attack_1/1_atk_5.png   | Bin [31m0[m -> [32m4248[m bytes
+ .../boss/omega_x/attack_1/1_atk_5.png.import       |  40 [32m++[m
+ assets/enemies/boss/omega_x/attack_1/1_atk_6.png   | Bin [31m0[m -> [32m4237[m bytes
+ .../boss/omega_x/attack_1/1_atk_6.png.import       |  40 [32m++[m
+ assets/enemies/boss/omega_x/attack_1/1_atk_7.png   | Bin [31m0[m -> [32m4500[m bytes
+ .../boss/omega_x/attack_1/1_atk_7.png.import       |  40 [32m++[m
+ assets/enemies/boss/omega_x/attack_1/1_atk_8.png   | Bin [31m0[m -> [32m4398[m bytes
+ .../boss/omega_x/attack_1/1_atk_8.png.import       |  40 [32m++[m
+ assets/enemies/boss/omega_x/attack_1/1_atk_9.png   | Bin [31m0[m -> [32m4188[m bytes
+ .../boss/omega_x/attack_1/1_atk_9.png.import       |  40 [32m++[m
+ assets/enemies/boss/omega_x/death/death_1.png      | Bin [31m0[m -> [32m4546[m bytes
+ .../enemies/boss/omega_x/death/death_1.png.import  |  40 [32m++[m
+ assets/enemies/boss/omega_x/death/death_10.png     | Bin [31m0[m -> [32m2021[m bytes
+ .../enemies/boss/omega_x/death/death_10.png.import |  40 [32m++[m
+ assets/enemies/boss/omega_x/death/death_11.png     | Bin [31m0[m -> [32m2009[m bytes
+ .../enemies/boss/omega_x/death/death_11.png.import |  40 [32m++[m
+ assets/enemies/boss/omega_x/death/death_12.png     | Bin [31m0[m -> [32m1819[m bytes
+ .../enemies/boss/omega_x/death/death_12.png.import |  40 [32m++[m
+ assets/enemies/boss/omega_x/death/death_13.png     | Bin [31m0[m -> [32m1431[m bytes
+ .../enemies/boss/omega_x/death/death_13.png.import |  40 [32m++[m
+ assets/enemies/boss/omega_x/death/death_14.png     | Bin [31m0[m -> [32m1296[m bytes
+ .../enemies/boss/omega_x/death/death_14.png.import |  40 [32m++[m
+ assets/enemies/boss/omega_x/death/death_15.png     | Bin [31m0[m -> [32m1288[m bytes
+ .../enemies/boss/omega_x/death/death_15.png.import |  40 [32m++[m
+ assets/enemies/boss/omega_x/death/death_16.png     | Bin [31m0[m -> [32m1288[m bytes
+ .../enemies/boss/omega_x/death/death_16.png.import |  40 [32m++[m
+ assets/enemies/boss/omega_x/death/death_2.png      | Bin [31m0[m -> [32m4464[m bytes
+ .../enemies/boss/omega_x/death/death_2.png.import  |  40 [32m++[m
+ assets/enemies/boss/omega_x/death/death_3.png      | Bin [31m0[m -> [32m3836[m bytes
+ .../enemies/boss/omega_x/death/death_3.png.import  |  40 [32m++[m
+ assets/enemies/boss/omega_x/death/death_4.png      | Bin [31m0[m -> [32m3942[m bytes
+ .../enemies/boss/omega_x/death/death_4.png.import  |  40 [32m++[m
+ assets/enemies/boss/omega_x/death/death_5.png      | Bin [31m0[m -> [32m3993[m bytes
+ .../enemies/boss/omega_x/death/death_5.png.import  |  40 [32m++[m
+ assets/enemies/boss/omega_x/death/death_6.png      | Bin [31m0[m -> [32m4122[m bytes
+ .../enemies/boss/omega_x/death/death_6.png.import  |  40 [32m++[m
+ assets/enem

@@ -1,0 +1,176 @@
+[gd_scene load_steps=25 format=3]
+
+[ext_resource type="Script" path="res://scripts/enemies/attack_drone.gd" id="1_script"]
+[ext_resource type="Script" path="res://scripts/components/health_component.gd" id="2_health"]
+[ext_resource type="Texture2D" path="res://assets/enemies/drone_3/drone_idle.png" id="3_idle"]
+[ext_resource type="Texture2D" path="res://assets/enemies/drone_3/drone_fire.png" id="4_fire"]
+[ext_resource type="Texture2D" path="res://assets/enemies/drone_3/drone_death.png" id="5_death"]
+
+[sub_resource type="AtlasTexture" id="Atlas_h0"]
+atlas = ExtResource("3_idle")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="Atlas_h1"]
+atlas = ExtResource("3_idle")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="Atlas_h2"]
+atlas = ExtResource("3_idle")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="Atlas_h3"]
+atlas = ExtResource("3_idle")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="Atlas_w0"]
+atlas = ExtResource("4_fire")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="Atlas_w1"]
+atlas = ExtResource("4_fire")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="Atlas_w2"]
+atlas = ExtResource("4_fire")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="Atlas_w3"]
+atlas = ExtResource("4_fire")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="Atlas_d0"]
+atlas = ExtResource("5_death")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="Atlas_d1"]
+atlas = ExtResource("5_death")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="Atlas_d2"]
+atlas = ExtResource("5_death")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="Atlas_d3"]
+atlas = ExtResource("5_death")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="Atlas_d4"]
+atlas = ExtResource("5_death")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="Atlas_d5"]
+atlas = ExtResource("5_death")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="Atlas_d6"]
+atlas = ExtResource("5_death")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="Atlas_d7"]
+atlas = ExtResource("5_death")
+region = Rect2(336, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_drone"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("Atlas_d0")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_d1")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_d2")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_d3")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_d4")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_d5")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_d6")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_d7")
+}],
+"loop": false,
+"name": &"death",
+"speed": 14.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("Atlas_h0")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_h1")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_h2")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_h3")
+}],
+"loop": true,
+"name": &"hover",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("Atlas_w0")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_w1")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_w2")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_w3")
+}],
+"loop": true,
+"name": &"warn",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_drone"]
+radius = 22.0
+
+[node name="AttackDrone" type="CharacterBody2D"]
+collision_layer = 4
+motion_mode = 1
+script = ExtResource("1_script")
+patrol_speed = 85.0
+projectile_speed = 320.0
+warning_duration = 0.55
+damage = 10
+score_reward = 150
+detection_range = 400.0
+attack_range = 330.0
+attack_cooldown = 2.0
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("2_health")
+max_health = 40
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(1.4, 1.4)
+sprite_frames = SubResource("SpriteFrames_drone")
+animation = &"hover"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_drone")
+
+[node name="LineOfSightRay" type="RayCast2D" parent="."]
+enabled = false
+target_position = Vector2(100, 0)
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(0, 8)
+
+[node name="AttackCooldownTimer" type="Timer" parent="."]
+one_shot = true

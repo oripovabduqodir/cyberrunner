@@ -1,9 +1,14 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=11 format=3]
 
 [ext_resource type="Script" path="res://scripts/ui/main_menu.gd" id="1_script"]
 [ext_resource type="Theme" path="res://resources/cyberpunk_theme.tres" id="2_theme"]
 [ext_resource type="PackedScene" path="res://scenes/ui/cyber_background.tscn" id="3_bg"]
 [ext_resource type="PackedScene" path="res://scenes/ui/cyber_button.tscn" id="4_btn"]
+[ext_resource type="SpriteFrames" path="res://resources/player_sprite_frames.tres" id="5_hero"]
+[ext_resource type="Texture2D" path="res://assets/tilesets/neon_city/IndustrialTile_55.png" id="6_plat_l"]
+[ext_resource type="Texture2D" path="res://assets/tilesets/neon_city/IndustrialTile_56.png" id="7_plat_m"]
+[ext_resource type="Texture2D" path="res://assets/tilesets/neon_city/IndustrialTile_57.png" id="8_plat_r"]
+[ext_resource type="Texture2D" path="res://assets/tilesets/neon_city/IndustrialTile_02.png" id="9_plat_fill"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_status"]
 content_margin_left = 12.0
@@ -26,6 +31,77 @@ script = ExtResource("1_script")
 
 [node name="CyberBackground" parent="." instance=ExtResource("3_bg")]
 layout_mode = 1
+
+[node name="MenuBackdrop" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 520.0
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.0313726, 0.0431373, 0.0862745, 0.52)
+
+[node name="HeroPlatform" type="Node2D" parent="."]
+position = Vector2(970, 538)
+
+[node name="TopL" type="Sprite2D" parent="HeroPlatform"]
+texture_filter = 1
+position = Vector2(-96, 32)
+scale = Vector2(2, 2)
+texture = ExtResource("6_plat_l")
+
+[node name="TopM1" type="Sprite2D" parent="HeroPlatform"]
+texture_filter = 1
+position = Vector2(-32, 32)
+scale = Vector2(2, 2)
+texture = ExtResource("7_plat_m")
+
+[node name="TopM2" type="Sprite2D" parent="HeroPlatform"]
+texture_filter = 1
+position = Vector2(32, 32)
+scale = Vector2(2, 2)
+texture = ExtResource("7_plat_m")
+
+[node name="TopR" type="Sprite2D" parent="HeroPlatform"]
+texture_filter = 1
+position = Vector2(96, 32)
+scale = Vector2(2, 2)
+texture = ExtResource("8_plat_r")
+
+[node name="FillL" type="Sprite2D" parent="HeroPlatform"]
+texture_filter = 1
+position = Vector2(-96, 96)
+scale = Vector2(2, 2)
+texture = ExtResource("9_plat_fill")
+
+[node name="FillM1" type="Sprite2D" parent="HeroPlatform"]
+texture_filter = 1
+position = Vector2(-32, 96)
+scale = Vector2(2, 2)
+texture = ExtResource("9_plat_fill")
+
+[node name="FillM2" type="Sprite2D" parent="HeroPlatform"]
+texture_filter = 1
+position = Vector2(32, 96)
+scale = Vector2(2, 2)
+texture = ExtResource("9_plat_fill")
+
+[node name="FillR" type="Sprite2D" parent="HeroPlatform"]
+texture_filter = 1
+position = Vector2(96, 96)
+scale = Vector2(2, 2)
+texture = ExtResource("9_plat_fill")
+
+[node name="HeroShowcase" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.95, 0.99, 1, 1)
+texture_filter = 1
+position = Vector2(970, 440)
+scale = Vector2(4.2, 4.2)
+offset = Vector2(12, 0)
+sprite_frames = ExtResource("5_hero")
+animation = &"idle"
+autoplay = "idle"
+flip_h = true
 
 [node name="SafeArea" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -108,6 +184,10 @@ text = "SELECT LEVEL"
 [node name="SettingsButton" parent="SafeArea/MainContainer/MenuButtons" instance=ExtResource("4_btn")]
 layout_mode = 2
 text = "SETTINGS"
+
+[node name="CreditsButton" parent="SafeArea/MainContainer/MenuButtons" instance=ExtResource("4_btn")]
+layout_mode = 2
+text = "CREDITS"
 
 [node name="ExitButton" parent="SafeArea/MainContainer/MenuButtons" instance=ExtResource("4_btn")]
 layout_mode = 2

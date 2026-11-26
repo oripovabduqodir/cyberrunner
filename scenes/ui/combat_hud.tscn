@@ -1,0 +1,521 @@
+[gd_scene load_steps=13 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/combat_hud.gd" id="1_script"]
+[ext_resource type="Theme" path="res://resources/cyberpunk_theme.tres" id="2_theme"]
+[ext_resource type="PackedScene" path="res://scenes/ui/cyber_button.tscn" id="3_btn"]
+[ext_resource type="PackedScene" path="res://scenes/ui/crosshair.tscn" id="4_crosshair"]
+[ext_resource type="PackedScene" path="res://scenes/ui/mobile/mobile_controls.tscn" id="5_mobile"]
+[ext_resource type="PackedScene" path="res://scenes/ui/pause_menu.tscn" id="6_pause"]
+[ext_resource type="Texture2D" path="res://assets/weapons/plasma_pistol_gun.png" id="7_gun_icon"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bar_bg"]
+bg_color = Color(0.05, 0.05, 0.11, 0.95)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.35, 0.4, 0.58, 0.75)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hp_fill"]
+bg_color = Color(1, 0, 0.498039, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_en_fill"]
+bg_color = Color(0, 0.941176, 1, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_boss_fill"]
+bg_color = Color(1, 0.12, 0.28, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gameover_panel"]
+content_margin_left = 24.0
+content_margin_top = 24.0
+content_margin_right = 24.0
+content_margin_bottom = 24.0
+bg_color = Color(0.05, 0.02, 0.07, 0.94)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0, 0.498039, 0.9)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="CombatHUD" type="CanvasLayer"]
+layer = 5
+script = ExtResource("1_script")
+
+[node name="TopLeftPanel" type="PanelContainer" parent="."]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 350.0
+offset_bottom = 128.0
+mouse_filter = 2
+theme = ExtResource("2_theme")
+
+[node name="Margin" type="MarginContainer" parent="TopLeftPanel"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 2
+
+[node name="VBox" type="VBoxContainer" parent="TopLeftPanel/Margin"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 6
+
+[node name="LevelLabel" type="Label" parent="TopLeftPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.941176, 1, 1)
+theme_override_font_sizes/font_size = 15
+text = "LEVEL 01 — NEON CITY"
+
+[node name="HealthRow" type="HBoxContainer" parent="TopLeftPanel/Margin/VBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="HPTag" type="Label" parent="TopLeftPanel/Margin/VBox/HealthRow"]
+custom_minimum_size = Vector2(28, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0.498039, 1)
+theme_override_font_sizes/font_size = 14
+text = "HP"
+
+[node name="HealthBar" type="ProgressBar" parent="TopLeftPanel/Margin/VBox/HealthRow"]
+custom_minimum_size = Vector2(165, 16)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_bar_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_hp_fill")
+value = 100.0
+show_percentage = false
+
+[node name="HealthValue" type="Label" parent="TopLeftPanel/Margin/VBox/HealthRow"]
+custom_minimum_size = Vector2(68, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "100 / 100"
+horizontal_alignment = 2
+
+[node name="EnergyRow" type="HBoxContainer" parent="TopLeftPanel/Margin/VBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="ENTag" type="Label" parent="TopLeftPanel/Margin/VBox/EnergyRow"]
+custom_minimum_size = Vector2(28, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.941176, 1, 1)
+theme_override_font_sizes/font_size = 14
+text = "EN"
+
+[node name="EnergyBar" type="ProgressBar" parent="TopLeftPanel/Margin/VBox/EnergyRow"]
+custom_minimum_size = Vector2(165, 14)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_bar_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_en_fill")
+value = 100.0
+show_percentage = false
+
+[node name="EnergyValue" type="Label" parent="TopLeftPanel/Margin/VBox/EnergyRow"]
+custom_minimum_size = Vector2(68, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "100"
+horizontal_alignment = 2
+
+[node name="TopRightPanel" type="PanelContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -290.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 128.0
+grow_horizontal = 0
+mouse_filter = 2
+theme = ExtResource("2_theme")
+
+[node name="Margin" type="MarginContainer" parent="TopRightPanel"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 2
+
+[node name="VBox" type="VBoxContainer" parent="TopRightPanel/Margin"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 5
+
+[node name="WeaponRow" type="HBoxContainer" parent="TopRightPanel/Margin/VBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 8
+alignment = 2
+
+[node name="WeaponIcon" type="TextureRect" parent="TopRightPanel/Margin/VBox/WeaponRow"]
+custom_minimum_size = Vector2(26, 20)
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("7_gun_icon")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="WeaponName" type="Label" parent="TopRightPanel/Margin/VBox/WeaponRow"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.898039, 1, 1)
+theme_override_font_sizes/font_size = 15
+text = "PLASMA PISTOL"
+horizontal_alignment = 2
+
+[node name="AmmoLabel" type="Label" parent="TopRightPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.98, 1, 1)
+theme_override_font_sizes/font_size = 16
+text = "AMMO: 12 / 12  (48)"
+horizontal_alignment = 2
+
+[node name="ScoreLabel" type="Label" parent="TopRightPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0.498039, 1)
+theme_override_font_sizes/font_size = 16
+text = "SCORE: 0"
+horizontal_alignment = 2
+
+[node name="BossPanel" type="PanelContainer" parent="."]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -280.0
+offset_top = -126.0
+offset_right = 280.0
+offset_bottom = -42.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme = ExtResource("2_theme")
+
+[node name="Margin" type="MarginContainer" parent="BossPanel"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 2
+
+[node name="VBox" type="VBoxContainer" parent="BossPanel/Margin"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 4
+
+[node name="HeaderRow" type="HBoxContainer" parent="BossPanel/Margin/VBox"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="BossName" type="Label" parent="BossPanel/Margin/VBox/HeaderRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0, 0.498039, 1)
+theme_override_font_sizes/font_size = 15
+text = "OMEGA-X  //  CENTRAL AI GUARDIAN"
+
+[node name="BossHealthValue" type="Label" parent="BossPanel/Margin/VBox/HeaderRow"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "1000 / 1000"
+
+[node name="BossHealthBar" type="ProgressBar" parent="BossPanel/Margin/VBox"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_bar_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_boss_fill")
+max_value = 1000.0
+value = 1000.0
+show_percentage = false
+
+[node name="BossPhaseLabel" type="Label" parent="BossPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.941176, 1, 1)
+theme_override_font_sizes/font_size = 13
+text = "PHASE 01 — DEFENSE MODE"
+horizontal_alignment = 1
+
+[node name="ControlsHint" type="Label" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = -34.0
+offset_right = 760.0
+offset_bottom = -10.0
+grow_vertical = 0
+theme = ExtResource("2_theme")
+theme_override_colors/font_color = Color(0.75, 0.85, 0.95, 0.72)
+theme_override_font_sizes/font_size = 13
+text = "A/D: Harakat | Space: Sakrash/2x | Shift: Dash | LMB/J: Otish | RMB/K: Qilich | R/F: Reload | P: Pauza | F6: Qayta | Esc: Menyu"
+
+[node name="BannerLabel" type="Label" parent="."]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -360.0
+offset_top = 48.0
+offset_right = 360.0
+offset_bottom = 96.0
+grow_horizontal = 2
+theme = ExtResource("2_theme")
+theme_override_font_sizes/font_size = 30
+text = "LEVEL 01 — NEON CITY"
+horizontal_alignment = 1
+
+[node name="LevelCompleteOverlay" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_theme")
+color = Color(0.02, 0.02, 0.05, 0.78)
+
+[node name="Center" type="CenterContainer" parent="LevelCompleteOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="PanelContainer" parent="LevelCompleteOverlay/Center"]
+custom_minimum_size = Vector2(680, 260)
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="LevelCompleteOverlay/Center/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 16
+
+[node name="VBox" type="VBoxContainer" parent="LevelCompleteOverlay/Center/Panel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="CompleteTitle" type="Label" parent="LevelCompleteOverlay/Center/Panel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.941176, 1, 1)
+theme_override_font_sizes/font_size = 36
+text = "LEVEL COMPLETED"
+horizontal_alignment = 1
+
+[node name="CompleteSub" type="Label" parent="LevelCompleteOverlay/Center/Panel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0.498039, 1)
+theme_override_font_sizes/font_size = 18
+text = "SECTOR 01 — NEON CITY CLEARED"
+horizontal_alignment = 1
+
+[node name="ButtonsRow" type="HBoxContainer" parent="LevelCompleteOverlay/Center/Panel/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="NextLevelButton" parent="LevelCompleteOverlay/Center/Panel/Margin/VBox/ButtonsRow" instance=ExtResource("3_btn")]
+custom_minimum_size = Vector2(190, 52)
+layout_mode = 2
+text = "NEXT LEVEL"
+
+[node name="RestartButton" parent="LevelCompleteOverlay/Center/Panel/Margin/VBox/ButtonsRow" instance=ExtResource("3_btn")]
+custom_minimum_size = Vector2(190, 52)
+layout_mode = 2
+text = "RESTART LEVEL"
+
+[node name="MainMenuButton" parent="LevelCompleteOverlay/Center/Panel/Margin/VBox/ButtonsRow" instance=ExtResource("3_btn")]
+custom_minimum_size = Vector2(180, 52)
+layout_mode = 2
+text = "MAIN MENU"
+
+[node name="GameOverOverlay" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_theme")
+color = Color(0.03, 0.01, 0.04, 0.82)
+
+[node name="Center" type="CenterContainer" parent="GameOverOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="PanelContainer" parent="GameOverOverlay/Center"]
+custom_minimum_size = Vector2(680, 260)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gameover_panel")
+
+[node name="Margin" type="MarginContainer" parent="GameOverOverlay/Center/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 14
+
+[node name="VBox" type="VBoxContainer" parent="GameOverOverlay/Center/Panel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="Title" type="Label" parent="GameOverOverlay/Center/Panel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0.498039, 1)
+theme_override_font_sizes/font_size = 42
+text = "GAME OVER"
+horizontal_alignment = 1
+
+[node name="Sub" type="Label" parent="GameOverOverlay/Center/Panel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.92, 1, 0.9)
+theme_override_font_sizes/font_size = 16
+text = "SYSTEM CRITICAL — UNIT OFFLINE"
+horizontal_alignment = 1
+
+[node name="ButtonsRow" type="HBoxContainer" parent="GameOverOverlay/Center/Panel/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="RetryCheckpointButton" parent="GameOverOverlay/Center/Panel/Margin/VBox/ButtonsRow" instance=ExtResource("3_btn")]
+custom_minimum_size = Vector2(210, 52)
+layout_mode = 2
+text = "RETRY CHECKPOINT"
+
+[node name="RestartButton" parent="GameOverOverlay/Center/Panel/Margin/VBox/ButtonsRow" instance=ExtResource("3_btn")]
+custom_minimum_size = Vector2(185, 52)
+layout_mode = 2
+text = "RESTART LEVEL"
+
+[node name="MainMenuButton" parent="GameOverOverlay/Center/Panel/Margin/VBox/ButtonsRow" instance=ExtResource("3_btn")]
+custom_minimum_size = Vector2(175, 52)
+layout_mode = 2
+text = "MAIN MENU"
+
+[node name="GameCompletedOverlay" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_theme")
+color = Color(0.02, 0.02, 0.06, 0.86)
+
+[node name="Center" type="CenterContainer" parent="GameCompletedOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="PanelContainer" parent="GameCompletedOverlay/Center"]
+custom_minimum_size = Vector2(580, 320)
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="GameCompletedOverlay/Center/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 18
+
+[node name="VBox" type="VBoxContainer" parent="GameCompletedOverlay/Center/Panel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="MissionTitle" type="Label" parent="GameCompletedOverlay/Center/Panel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.941176, 1, 1)
+theme_override_font_sizes/font_size = 38
+text = "MISSION COMPLETE"
+horizontal_alignment = 1
+
+[node name="BossDestroyed" type="Label" parent="GameCompletedOverlay/Center/Panel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0.498039, 1)
+theme_override_font_sizes/font_size = 20
+text = "OMEGA-X DESTROYED"
+horizontal_alignment = 1
+
+[node name="TotalScoreLabel" type="Label" parent="GameCompletedOverlay/Center/Panel/Margin/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "TOTAL SCORE: 0"
+horizontal_alignment = 1
+
+[node name="EnemiesDefeatedLabel" type="Label" parent="GameCompletedOverlay/Center/Panel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.88, 0.98, 0.95)
+theme_override_font_sizes/font_size = 18
+text = "Enemies Defeated: 0"
+horizontal_alignment = 1
+
+[node name="ButtonsRow" type="HBoxContainer" parent="GameCompletedOverlay/Center/Panel/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="ReplayButton" parent="GameCompletedOverlay/Center/Panel/Margin/VBox/ButtonsRow" instance=ExtResource("3_btn")]
+custom_minimum_size = Vector2(200, 52)
+layout_mode = 2
+text = "REPLAY GAME"
+
+[node name="MainMenuButton" parent="GameCompletedOverlay/Center/Panel/Margin/VBox/ButtonsRow" instance=ExtResource("3_btn")]
+custom_minimum_size = Vector2(200, 52)
+layout_mode = 2
+text = "MAIN MENU"
+
+[node name="Crosshair" parent="." instance=ExtResource("4_crosshair")]
+
+[node name="MobileControls" parent="." instance=ExtResource("5_mobile")]
+visible = false
+
+[node name="PauseMenu" parent="." instance=ExtResource("6_pause")]
+visible = false

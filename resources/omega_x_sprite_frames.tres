@@ -1,0 +1,358 @@
+[gd_resource type="SpriteFrames" load_steps=54 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/enemies/boss/omega_x/idle/idle_1.png" id="1_i1"]
+[ext_resource type="Texture2D" path="res://assets/enemies/boss/omega_x/idle/idle_2.png" id="2_i2"]
+[ext_resource type="Texture2D" path="res://assets/enemies/boss/omega_x/idle/idle_3.png" id="3_i3"]
+[ext_resource type="Texture2D" path="res://assets/enemies/boss/omega_x/idle/idle_4.png" id="4_i4"]
+[ext_resource type="Texture2D" path="res://assets/enemies/boss/omega_x/idle/idle_5.png" id="5_i5"]
+[ext_resource type="Texture2D" path="res://assets/enemies/boss/omega_x/idle/idle_6.png" id="6_i6"]
+[ext_resource type="Texture2D" path="res://assets/enemies/boss/omega_x/walk/walk_1.png" id="7_w1"]
+[ext_resource type="Texture2D" path="res://assets/enemies/boss/omega_x/walk/walk_2.png" id="8_w2"]
+[ext_resource type="Texture2D" path="res://assets/enemies/boss/omega_x/walk/walk_3.png" id="9_w3"]
+[ext_resource type="Texture2D" path="res://assets/enemies/boss/omega_x/walk/walk_4.png" id="10_w4"]
+[ext_resource type="Texture2D" path="res://assets/enemies/boss/omega_x/walk/walk_5.png" id="11_w5"]
+[ext_resource type="Texture2D" path="res://assets/enemies/boss/omega_x/walk/walk_6.png" id="12_w6"]
+[ext_resource type="Texture2D" path="res://assets/enemies/boss/omega_x/walk/walk_7.png" id="13_w7"]
+[ext_resource type="Texture2D" path="res://assets/enemies/boss/omega_x/walk/walk_8.png" id="14_w8"]
+[ext_resource type="Texture2D" path="res://assets/enemies/boss/omega_x/walk/walk_9.png" id="15_w9"]
+[ext_resource type="Texture2D" path="res://assets/enemies/boss/omega_x/walk/walk_10.png" id="16_w10"]
+[ext_resource type="Texture2D" path="res://assets/enemies/boss/omega_x/attack_1/1_atk_1.png" id="17_a1"]
+[ext_resource type="Texture2D" path="res://assets/enemies/boss/omega_x/attack_1/1_atk_2.png" id="18_a2"]
+[ext_resource type="Texture2D" path="res://assets/enemies/boss/omega_x/attack_1/1_atk_3.png" id="19_a3"]
+[ext_resource type="Texture2D" path="res://assets/enemies/boss/omega_x/attack_1/1_atk_4.png" id="20_a4"]
+[ext_resource type="Texture2D" path="res://assets/enemies/boss/omega_x/attack_1/1_atk_5.png" id="21_a5"]
+[ext_resource type="Texture2D" path="res://assets/enemies/boss/omega_x/attack_1/1_atk_6.png" id="22_a6"]
+[ext_resource type="Texture2D" path="res://assets/enemies/boss/omega_x/attack_1/1_atk_7.png" id="23_a7"]
+[ext_resource type="Texture2D" path="res://assets/enemies/boss/omega_x/attack_1/1_atk_8.png" id="24_a8"]
+[ext_resource type="Texture2D" path="res://assets/enemies/boss/omega_x/attack_1/1_atk_9.png" id="25_a9"]
+[ext_resource type="Texture2D" path="res://assets/enemies/boss/omega_x/attack_1/1_atk_10.png" id="26_a10"]
+[ext_resource type="Texture2D" path="res://assets/enemies/boss/omega_x/attack_1/1_atk_11.png" id="27_a11"]
+[ext_resource type="Texture2D" path="res://assets/enemies/boss/omega_x/attack_1/1_atk_12.png" id="28_a12"]
+[ext_resource type="Texture2D" path="res://assets/enemies/boss/omega_x/attack_1/1_atk_13.png" id="29_a13"]
+[ext_resource type="Texture2D" path="res://assets/enemies/boss/omega_x/attack_1/1_atk_14.png" id="30_a14"]
+[ext_resource type="Texture2D" path="res://assets/enemies/boss/omega_x/take_hit/take_hit_1.png" id="31_h1"]
+[ext_resource type="Texture2D" path="res://assets/enemies/boss/omega_x/take_hit/take_hit_2.png" id="32_h2"]
+[ext_resource type="Texture2D" path="res://assets/enemies/boss/omega_x/take_hit/take_hit_3.png" id="33_h3"]
+[ext_resource type="Texture2D" path="res://assets/enemies/boss/omega_x/take_hit/take_hit_4.png" id="34_h4"]
+[ext_resource type="Texture2D" path="res://assets/enemies/boss/omega_x/take_hit/take_hit_5.png" id="35_h5"]
+[ext_resource type="Texture2D" path="res://assets/enemies/boss/omega_x/take_hit/take_hit_6.png" id="36_h6"]
+[ext_resource type="Texture2D" path="res://assets/enemies/boss/omega_x/take_hit/take_hit_7.png" id="37_h7"]
+[ext_resource type="Texture2D" path="res://assets/enemies/boss/omega_x/death/death_1.png" id="38_d1"]
+[ext_resource type="Texture2D" path="res://assets/enemies/boss/omega_x/death/death_2.png" id="39_d2"]
+[ext_resource type="Texture2D" path="res://assets/enemies/boss/omega_x/death/death_3.png" id="40_d3"]
+[ext_resource type="Texture2D" path="res://assets/enemies/boss/omega_x/death/death_4.png" id="41_d4"]
+[ext_resource type="Texture2D" path="res://assets/enemies/boss/omega_x/death/death_5.png" id="42_d5"]
+[ext_resource type="Texture2D" path="res://assets/enemies/boss/omega_x/death/death_6.png" id="43_d6"]
+[ext_resource type="Texture2D" path="res://assets/enemies/boss/omega_x/death/death_7.png" id="44_d7"]
+[ext_resource type="Texture2D" path="res://assets/enemies/boss/omega_x/death/death_8.png" id="45_d8"]
+[ext_resource type="Texture2D" path="res://assets/enemies/boss/omega_x/death/death_9.png" id="46_d9"]
+[ext_resource type="Texture2D" path="res://assets/enemies/boss/omega_x/death/death_10.png" id="47_d10"]
+[ext_resource type="Texture2D" path="res://assets/enemies/boss/omega_x/death/death_11.png" id="48_d11"]
+[ext_resource type="Texture2D" path="res://assets/enemies/boss/omega_x/death/death_12.png" id="49_d12"]
+[ext_resource type="Texture2D" path="res://assets/enemies/boss/omega_x/death/death_13.png" id="50_d13"]
+[ext_resource type="Texture2D" path="res://assets/enemies/boss/omega_x/death/death_14.png" id="51_d14"]
+[ext_resource type="Texture2D" path="res://assets/enemies/boss/omega_x/death/death_15.png" id="52_d15"]
+[ext_resource type="Texture2D" path="res://assets/enemies/boss/omega_x/death/death_16.png" id="53_d16"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_i1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_i2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_i3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_i4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_i5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_i6")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_w1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_w2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_w3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_w4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_w5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_w6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_w7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_w8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_w9")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_w10")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_a1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_a2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_a3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_a4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_a5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_a6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_a7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_a8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_a9")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_a10")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_a11")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_a12")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_a13")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_a14")
+}],
+"loop": false,
+"name": &"plasma_attack",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_a3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_a4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_a5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_a6")
+}],
+"loop": true,
+"name": &"laser_charge",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_a7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_a8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_a9")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_a8")
+}],
+"loop": true,
+"name": &"laser_fire",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_a1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_a2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_a3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_a4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_a5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_a6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_a7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_a8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_a9")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_a10")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_a11")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_a12")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_a13")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_a14")
+}],
+"loop": false,
+"name": &"ground_slam",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("31_h1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_h2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_h3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_h4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_h5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_h6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_h7")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 14.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("32_h2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_h3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_h4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_a3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_a4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_a5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_a6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_a11")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_a13")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_a14")
+}],
+"loop": false,
+"name": &"phase_transition",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("38_d1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_d2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_d3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_d4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_d5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_d6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_d7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_d8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_d9")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_d10")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_d11")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_d12")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_d13")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_d14")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_d15")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_d16")
+}],
+"loop": false,
+"name": &"death",
+"speed": 10.0
+}]

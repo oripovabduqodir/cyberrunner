@@ -1,0 +1,101 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/credits_menu.gd" id="1_script"]
+[ext_resource type="Theme" path="res://resources/cyberpunk_theme.tres" id="2_theme"]
+[ext_resource type="PackedScene" path="res://scenes/ui/cyber_background.tscn" id="3_bg"]
+[ext_resource type="PackedScene" path="res://scenes/ui/cyber_button.tscn" id="4_btn"]
+
+[node name="CreditsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_theme")
+script = ExtResource("1_script")
+
+[node name="CyberBackground" parent="." instance=ExtResource("3_bg")]
+layout_mode = 1
+
+[node name="Center" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainPanel" type="PanelContainer" parent="Center"]
+custom_minimum_size = Vector2(780, 520)
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="Center/MainPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 16
+
+[node name="VBox" type="VBoxContainer" parent="Center/MainPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Title" type="Label" parent="Center/MainPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.898039, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "CREDITS & LICENSES"
+horizontal_alignment = 1
+
+[node name="SubTitle" type="Label" parent="Center/MainPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0.498039, 0.95)
+theme_override_font_sizes/font_size = 15
+text = "CYBER RUNNER — THE LAST RESISTANCE"
+horizontal_alignment = 1
+
+[node name="Scroll" type="ScrollContainer" parent="Center/MainPanel/Margin/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="Body" type="Label" parent="Center/MainPanel/Margin/VBox/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.86, 0.95, 1, 0.94)
+theme_override_font_sizes/font_size = 16
+text = "DEVELOPMENT & ENGINE
+• Game Design & Programming: CYBER RUNNER Project
+• Engine: Godot Engine 4.7.2 (GL Compatibility Renderer)
+
+PIXEL ART & GRAPHIC ASSETS
+• Ansimuz — Warped City (Backgrounds, Neon Props, Vehicles, Turret, FX)
+  License: CC0 (Public Domain)
+
+• CraftPix.net — Free 3 Cyberpunk Sprites Pixel Art (Cyborg Hero)
+• CraftPix.net — Free Guns for Cyberpunk Characters Pixel Art (Plasma Pistol, Bullet, Muzzle FX)
+• CraftPix.net — Free Industrial Zone Tileset (Tiles, Objects, Animated Screens/Doors/Keycard)
+• CraftPix.net — Power Station Free Tileset Pixel Art (Lab Tiles, Night Backgrounds, Reactor)
+• CraftPix.net — Free Drones Pack Pixel Art (Attack Drone 3)
+• CraftPix.net — Free Sci-Fi Antagonists Pixel Character Pack (Patrol Robot, Elite Robot)
+  License: CraftPix Free License (https://craftpix.net/file-licenses/)
+
+• chierit — Boss: Frost Guardian (OMEGA-X Central AI Guardian)
+  Author: chierit
+  Source: https://chierit.itch.io/boss-frost-guardian
+  License: CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)
+  Modifications: Integrated 53 FREE animation frames (192x128) with 3-phase cyberpunk palette shader, plasma/laser/overload VFX adaptation.
+
+NOTE
+All raw third-party sprite archives remain excluded from public distribution per license terms."
+autowrap_mode = 3
+
+[node name="Footer" type="HBoxContainer" parent="Center/MainPanel/Margin/VBox"]
+layout_mode = 2
+alignment = 1
+
+[node name="BackButton" parent="Center/MainPanel/Margin/VBox/Footer" instance=ExtResource("4_btn")]
+custom_minimum_size = Vector2(220, 48)
+layout_mode = 2
+text = "BACK"

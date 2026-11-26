@@ -54,3 +54,11 @@ Ushbu hujjat **CYBER RUNNER** o‘yinini ishlab chiqishda barcha agentlar va das
 - `scripts/` — umumiy GDScript fayllari, autoloadlar va komponentlar
 - `shaders/` — `.gdshader` fayllari (neon, CRT, glitch, hit flash)
 - `resources/` — `.tres` ma’lumot resurslari
+
+## 6. Git Version Control Qoidalari
+- Har bir bosqichni boshlashdan oldin `git status` orqali repository holatini tekshir.
+- Mavjud commitlar va loyiha tarixini saqla.
+- Foydalanuvchi sinovdan o‘tkazib tasdiqlamaguncha `git commit` va `git push` bajarilmasin.
+- Ruxsatsiz `git reset --hard`, `git clean -fd` va force push buyruqlarini ishlatma.
+- Maxfiy ma’lumotlar, tokenlar, parollar va vaqtinchalik Godot fayllarini (`.godot/`) repositoryga qo‘shma.
+- Har bir bosqich yakunida `HANDOFF.md` va `ROADMAP.md` fayllarini yangila.

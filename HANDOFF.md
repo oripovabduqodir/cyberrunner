@@ -1,51 +1,20 @@
 # HANDOFF.md — Loyiha Holati va Topshirish Jurnali
 
 ## Joriy Bosqich
-**4-BOSQICH: LEVEL 01 — NEON CITY** — **YAKUNLANDI** (Foydalanuvchi tomonidan Godot Editor’da sinovdan o‘tkazish va keyingi bosqichga ruxsat kutilmoqda).
+**8.1.10-BOSQICH: OMEGA-X Boss AI, Combat Behavior and Gameplay Fix** — **YAKUNLANDI** (Haqiqiy `final_battle.tscn` sahnasidagi avtomatik jangovar test va Godot konsol tekshiruvlari muvaffaqiyatli o‘tdi; foydalanuvchining `F5` amaliy sinovi kutilmoqda).
 
-## Bajarilgan Ishlar (4-BOSQICH)
-1. **Yuqori Sifatli Cyberpunk Pixel Art Resurslar (Original):**
-   - `assets/characters/player_cyber_warrior.png` (192×160, 17 ta animatsiya kadri: `idle`, `run`, `jump`, `fall`, `dash`).
-   - `assets/tilesets/neon_city_tileset.png` va `resources/neon_city_tileset.tres` (`TileSet`, 32×32 piksel, ko‘cha, tom, metall ko‘prik, sanoat hazard bloklari, qutilar va neon to‘siqlar to‘qnashuv shakllari bilan).
-   - `assets/tilesets/neon_city_props.png` (ko‘cha chiroqlari, reklama panellari, quvurlar, ventilyatsiya, chiqindi qutilari).
-   - `assets/tilesets/checkpoint_sheet.png` va `assets/tilesets/security_gate.png`.
-   - `assets/backgrounds/neon_city_sky.png` va `assets/backgrounds/neon_city_fg.png` (`skyline_far.png` va `skyline_mid.png` bilan birga 4 qatlamli `Parallax2D` uchun).
-2. **Personaj Grafikasi va Effektlar:**
-   - `resources/player_sprite_frames.tres` yangi `player_cyber_warrior.png` ga yangilandi.
-   - `scenes/player/player.tscn` va `scripts/player/player.gd` ga `DashTrail` va `LandParticles` (`CPUParticles2D`) hamda `set_controls_enabled()` qo‘shildi (`SettingsManager.visual_effects` bilan mos).
-3. **Modulli Daraja Komponentlari:**
-   - `scenes/levels/checkpoint.tscn` & `scripts/levels/checkpoint.gd` (`Checkpoint` — qayta ishlatiladigan checkpoint tizimi).
-   - `scenes/levels/security_gate.tscn` & `scripts/levels/security_gate.gd` (`SecurityGate` — daraja yakuni portali).
-4. **LEVEL 01 — NEON CITY (`scenes/levels/neon_city.tscn` & `scripts/levels/neon_city.gd`):**
-   - Uzunligi `9216px` (288 ta 32px plitka), 5 ta hudud: *Spawn Area*, *City Streets*, *Rooftops*, *Industrial Zone*, *Security Gate*.
-   - 4 qatlamli `Parallax2D` fon, animatsiyali yomg‘ir, suzuvchi tuman, miltillovchi neon chiroqlar (`SettingsManager.visual_effects` ga mos).
-   - 3 ta `Checkpoint` (`CHECKPOINT ACTIVATED` xabari va chuqurlikka tushganda oxirgi checkpointga qaytish).
-   - `R` tugmasi bilan darajani boshidan qayta boshlash, `Escape` bilan asosiy menyuga qaytish.
-   - `SecurityGate` ga yetganda `LEVEL COMPLETED` oynasi (`RESTART LEVEL` va `MAIN MENU`).
-   - Minimal HUD: `LEVEL 01`, `NEON CITY` va boshqaruv yordami.
-5. **Menyu Integratsiyasi:**
-   - `main_menu.gd` (`PLAY GAME`) va `level_select.gd` (`LEVEL 01 — NEON CITY`) endi `neon_city.tscn` ni ochadi. `test_level.tscn` saqlab qolindi.
+## Bajarilgan Ishlar (8.1.10-BOSQICH)
+1. **Asl Sabab (`_player_ref == null`):**
+   - `final_battle.tscn` da `OmegaX` tuguni `Player` dan oldin joylashgani sababli `OmegaX._ready()` vaqtida `Player` hali `"player"` guruhiga qo‘shilmagan va `_player_ref == null` bo‘lib qolgan edi (`_on_action_timer_timeout()` va harakat darhol qaytib ketardi).
+   - `omega_x.gd` ga `_ensure_player_ref()` (`_ready()` da `call_deferred`, `activate_boss()`, `_physics_process()` va `_on_action_timer_timeout()` ichida guruh + `find_child` tekshiruvi) qo‘shildi.
+2. **Boss AI, Hitbox va Yaqin Jang Yechimlari (`omega_x.tscn`, `omega_x.gd`, `final_battle.tscn`):**
+   - `_action_serial` korutin himoyasi va `action_timer` watchdog yordamida Boss `IDLE` yoki `PHASE_TRANSITION` da hech qachon qotib qolmaydi.
+   - `ContactArea` (`15 dmg`, `0.55s` + Player `0.75s` i-frames, knockback) va `MeleeHitbox` (`20/24 dmg` yaqin masofali Cleave hujumi + oldindan ogohlantirish) qo‘shildi; `LaserArea` yaqin bo‘shliqni yopish uchun `offset_left = 12.0` ga sozlandi.
+   - Phase 01 (Ta’qib, Plasma, yaqin Cleave, Ground Slam), Phase 02 (Tezroq ta’qib, 3x Plasma, Laser Beam, Drone Summoning, Ground Slam/Cleave) va Phase 03 (Agressiv ta’qib, darhol Ground Slam + shockwave, kuchaytirilgan Overload Laser, tezkor 3x Plasma, `PhaseSparks`) to‘liq faollashtirildi.
+   - `BossArenaTrigger` balandligi (`640px`) kengaytirildi; `Frost Guardian` 53 ta kadr, 3-fazali shader, `1000 HP` va `5000 score` saqlandi.
 
-## O‘zgartirilgan / Yaratilgan Fayllar
-- `cyberrunner/assets/characters/player_cyber_warrior.png` (yaratildi)
-- `cyberrunner/assets/tilesets/neon_city_tileset.png` (yaratildi)
-- `cyberrunner/assets/tilesets/neon_city_props.png` (yaratildi)
-- `cyberrunner/assets/tilesets/checkpoint_sheet.png` (yaratildi)
-- `cyberrunner/assets/tilesets/security_gate.png` (yaratildi)
-- `cyberrunner/assets/backgrounds/neon_city_sky.png` (yaratildi)
-- `cyberrunner/assets/backgrounds/neon_city_fg.png` (yaratildi)
-- `cyberrunner/resources/player_sprite_frames.tres` (yangilandi)
-- `cyberrunner/resources/neon_city_tileset.tres` (yaratildi)
-- `cyberrunner/scripts/player/player.gd` & `scenes/player/player.tscn` (yangilandi)
-- `cyberrunner/scripts/levels/checkpoint.gd` & `scenes/levels/checkpoint.tscn` (yaratildi)
-- `cyberrunner/scripts/levels/security_gate.gd` & `scenes/levels/security_gate.tscn` (yaratildi)
-- `cyberrunner/scripts/levels/neon_city.gd` & `scenes/levels/neon_city.tscn` (yaratildi)
-- `cyberrunner/scripts/ui/main_menu.gd`, `scripts/ui/level_select.gd`, `scenes/ui/level_select.tscn` (yangilandi)
-- `cyberrunner/ROADMAP.md` & `cyberrunner/HANDOFF.md` (yangilandi)
-
-## Aniqlangan Muammolar va Eslatmalar
-- Muhitda `godot` CLI mavjud emas, shu sababli daraja Godot Editor orqali ishga tushirib tekshirilmagan.
-- Barcha grafikalar original pixel art sifatida generatsiya qilingan, tashqi litsenziyali resurslarga bog‘liqlik yo‘q.
+## Tekshiruv Natijalari
+- `verify_omega_combat.gd` (`final_battle.tscn`): Boss aktivatsiyasi, ta’qib (`walk`, `4580 -> 4350`, o‘ngga burilish), Plasma (`100 -> 82`), Close/Contact (`100 -> 70`), Phase 2 Laser+Drone (`100 -> 34`), Phase 3 Ground Slam+Sparks (`100 -> 34`), Checkpoint Retry reset va Death (`5000` yagona ball + `GAME COMPLETED`) barchasi `EXIT:0` bilan o‘tdi.
 
 ## Keyingi Qadam
-Foydalanuvchi `neon_city.tscn` ni Godot Editor’da boshidan oxirigacha sinab ko‘rib tasdiqlaganidan so‘ng **5-BOSQICH** (Jang va qurol tizimi) ga o‘tiladi.
+Foydalanuvchi Godot Editor’da `F5` bosib **Final Battle** jangini amalda sinab tasdiqlaganidan so‘ng **8.2-BOSQICH** ga o‘tiladi.

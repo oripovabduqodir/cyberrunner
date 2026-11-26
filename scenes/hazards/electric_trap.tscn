@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scripts/hazards/electric_trap.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/tilesets/hazards_sheet.png" id="2_tex"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_off"]
+atlas = ExtResource("2_tex")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_on"]
+atlas = ExtResource("2_tex")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_elec"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_off")
+}],
+"loop": false,
+"name": &"inactive",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_on")
+}],
+"loop": true,
+"name": &"active",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_elec"]
+size = Vector2(60, 28)
+
+[node name="ElectricTrap" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_script")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -16)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_elec")
+animation = &"inactive"
+
+[node name="WarningBar" type="ColorRect" parent="."]
+visible = false
+offset_left = -28.0
+offset_top = -18.0
+offset_right = 28.0
+offset_bottom = -13.0
+color = Color(1, 0.72, 0.1, 0.95)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -14)
+shape = SubResource("RectangleShape2D_elec")
+disabled = true
+
+[node name="StateTimer" type="Timer" parent="."]
+one_shot = true

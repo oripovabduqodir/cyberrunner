@@ -1,7 +1,13 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=8 format=3]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_script"]
 [ext_resource type="SpriteFrames" path="res://resources/player_sprite_frames.tres" id="2_frames"]
+[ext_resource type="Script" path="res://scripts/components/health_component.gd" id="3_health"]
+[ext_resource type="Script" path="res://scripts/components/energy_component.gd" id="4_energy"]
+[ext_resource type="PackedScene" path="res://scenes/weapons/plasma_pistol.tscn" id="5_pistol"]
+[ext_resource type="PackedScene" path="res://scenes/weapons/cyber_blade.tscn" id="6_blade"]
+[ext_resource type="Script" path="res://scripts/components/aim_assist.gd" id="7_aim"]
+[ext_resource type="Script" path="res://scripts/components/target_indicator.gd" id="8_indicator"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
 size = Vector2(30, 52)
@@ -9,6 +15,13 @@ size = Vector2(30, 52)
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_script")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("3_health")
+invincibility_duration = 0.75
+
+[node name="EnergyComponent" type="Node" parent="."]
+script = ExtResource("4_energy")
 
 [node name="DashTrail" type="CPUParticles2D" parent="."]
 emitting = false
@@ -46,7 +59,9 @@ color = Color(0, 0.941176, 1, 0.75)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-scale = Vector2(2, 2)
+position = Vector2(0, -5)
+scale = Vector2(1.5, 1.5)
+offset = Vector2(12, 0)
 sprite_frames = ExtResource("2_frames")
 animation = &"idle"
 autoplay = "idle"
@@ -54,6 +69,24 @@ autoplay = "idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_body")
+
+[node name="PlasmaPistol" parent="." instance=ExtResource("5_pistol")]
+position = Vector2(10, 2)
+
+[node name="CyberBlade" parent="." instance=ExtResource("6_blade")]
+position = Vector2(6, 2)
+
+[node name="AimAssist" type="Node2D" parent="."]
+script = ExtResource("7_aim")
+
+[node name="LineOfSightRay" type="RayCast2D" parent="AimAssist"]
+enabled = false
+target_position = Vector2(100, 0)
+
+[node name="TargetIndicator" type="Node2D" parent="AimAssist"]
+visible = false
+z_index = 12
+script = ExtResource("8_indicator")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
